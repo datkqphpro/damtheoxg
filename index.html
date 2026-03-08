@@ -76,6 +76,7 @@ h1{
 <button onclick="openCard()">💌 Mở thiệp 8/3</button>
 
 <div class="card" id="card">
+
 <h1>🌸 Chúc Mừng Ngày 8/3 🌸</h1>
 
 <div class="text" id="line1"></div>
@@ -83,11 +84,23 @@ h1{
 <div class="text" id="line3"></div>
 <div class="text" id="line4"></div>
 
-</div>
+<div style="margin-top:25px">
+
+<button onclick="agree()">💖 Đồng ý</button>
+
+<button id="noBtn" onmouseover="runAway()" style="background:#555;margin-left:10px">
+😝 Không đồng ý
+</button>
 
 </div>
 
-<<audio id="music" loop>
+<div class="text" id="result" style="margin-top:15px;font-weight:bold;"></div>
+
+</div>
+
+</div>
+
+<audio id="music" loop>
 <source src="co-chac-yeu-la-day.mp3" type="audio/mpeg">
 </audio>
 
@@ -98,11 +111,34 @@ document.getElementById("card").style.display="block";
 
 document.getElementById("music").play();
 
-setTimeout(()=>{document.getElementById("line1").innerHTML="Chúc em một ngày 8/3 thật vui vẻ 🌸";},1000);
-setTimeout(()=>{document.getElementById("line2").innerHTML="Luôn xinh đẹp, hạnh phúc và thành công 💖";},3000);
-setTimeout(()=>{document.getElementById("line3").innerHTML="nghỉ kíp đi chơi mới anh nhóooo ✨";},5000);
+setTimeout(()=>{
+document.getElementById("line1").innerHTML="Chúc em một ngày 8/3 thật vui vẻ 🌸";
+},1000);
 
+setTimeout(()=>{
+document.getElementById("line2").innerHTML="Luôn xinh đẹp, hạnh phúc và thành công 💖";
+},3000);
 
+setTimeout(()=>{
+document.getElementById("line3").innerHTML="Nghỉ kíp đi chơi với anh nhóooo ✨";
+},5000);
+
+setTimeout(()=>{
+document.getElementById("line4").innerHTML="Em có đồng ý đi chơi với anh không? 😆";
+},7000);
+
+}
+
+function agree(){
+document.getElementById("result").innerHTML="💖 Anh biết mà, em đáng yêu nhất!";
+}
+
+function runAway(){
+const btn=document.getElementById("noBtn");
+
+btn.style.position="absolute";
+btn.style.left=Math.random()*80+"vw";
+btn.style.top=Math.random()*80+"vh";
 }
 
 function createFlower(){
@@ -117,7 +153,9 @@ flower.style.animationDuration=(4+Math.random()*5)+"s";
 
 document.body.appendChild(flower);
 
-setTimeout(()=>{flower.remove();},9000);
+setTimeout(()=>{
+flower.remove();
+},9000);
 }
 
 setInterval(createFlower,300);
