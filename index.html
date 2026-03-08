@@ -1,72 +1,110 @@
 <!DOCTYPE html>
+
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
+
+<!-- tối ưu mobile -->
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Thiệp 8/3</title>
 
 <style>
+
 body{
-    margin:0;
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:linear-gradient(135deg,#ff9a9e,#fad0c4,#ffdde1);
-    font-family:Arial;
-    overflow:hidden;
+margin:0;
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#ff9a9e,#fad0c4,#ffdde1);
+font-family:Arial, sans-serif;
+overflow:hidden;
+padding:20px;
 }
 
 .container{
-    text-align:center;
+text-align:center;
+width:100%;
+max-width:500px;
 }
 
 button{
-    padding:15px 35px;
-    font-size:20px;
-    border:none;
-    border-radius:30px;
-    background:#ff4081;
-    color:white;
-    cursor:pointer;
-    box-shadow:0 10px 20px rgba(0,0,0,0.2);
+padding:14px 28px;
+font-size:18px;
+border:none;
+border-radius:30px;
+background:#ff4081;
+color:white;
+cursor:pointer;
+box-shadow:0 8px 18px rgba(0,0,0,0.2);
+margin:5px;
 }
 
-button:hover{
-    transform:scale(1.1);
+button:active{
+transform:scale(0.95);
 }
 
 .card{
-    display:none;
-    margin-top:30px;
-    background:white;
-    padding:40px;
-    border-radius:20px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+display:none;
+margin-top:25px;
+background:white;
+padding:25px;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
 }
 
 h1{
-    color:#ff4081;
+color:#ff4081;
+font-size:26px;
 }
 
 .text{
-    font-size:20px;
-    margin-top:10px;
-    color:#444;
+font-size:18px;
+margin-top:10px;
+color:#444;
+}
+
+#result{
+font-weight:bold;
+color:#ff4081;
 }
 
 .flower{
-    position:fixed;
-    top:-10px;
-    font-size:25px;
-    animation:fall linear infinite;
+position:fixed;
+top:-10px;
+font-size:22px;
+animation:fall linear infinite;
+pointer-events:none;
 }
 
 @keyframes fall{
-    to{
-        transform:translateY(110vh);
-    }
+to{
+transform:translateY(110vh);
 }
+}
+
+/* mobile tối ưu thêm */
+@media (max-width:480px){
+
+h1{
+font-size:22px;
+}
+
+.text{
+font-size:16px;
+}
+
+button{
+width:100%;
+font-size:18px;
+}
+
+}
+
 </style>
+
 </head>
 
 <body>
@@ -84,17 +122,17 @@ h1{
 <div class="text" id="line3"></div>
 <div class="text" id="line4"></div>
 
-<div style="margin-top:25px">
+<div style="margin-top:20px">
 
 <button onclick="agree()">💖 Đồng ý</button>
 
-<button id="noBtn" onmouseover="runAway()" style="background:#555;margin-left:10px">
+<button id="noBtn" onclick="runAway()" style="background:#555">
 😝 Không đồng ý
 </button>
 
 </div>
 
-<div class="text" id="result" style="margin-top:15px;font-weight:bold;"></div>
+<div class="text" id="result"></div>
 
 </div>
 
@@ -107,8 +145,8 @@ h1{
 <script>
 
 function openCard(){
-document.getElementById("card").style.display="block";
 
+document.getElementById("card").style.display="block";
 document.getElementById("music").play();
 
 setTimeout(()=>{
@@ -130,18 +168,21 @@ document.getElementById("line4").innerHTML="Em có đồng ý đi chơi với an
 }
 
 function agree(){
-document.getElementById("result").innerHTML="💖 Anh biết mà, vậy hẹn em thứ 4 nhóooooo!";
+document.getElementById("result").innerHTML="💖 Anh biết mà, em đáng yêu nhất!";
 }
 
 function runAway(){
+
 const btn=document.getElementById("noBtn");
 
 btn.style.position="absolute";
 btn.style.left=Math.random()*80+"vw";
 btn.style.top=Math.random()*80+"vh";
+
 }
 
 function createFlower(){
+
 const flower=document.createElement("div");
 flower.classList.add("flower");
 
@@ -156,9 +197,10 @@ document.body.appendChild(flower);
 setTimeout(()=>{
 flower.remove();
 },9000);
+
 }
 
-setInterval(createFlower,300);
+setInterval(createFlower,400);
 
 </script>
 
